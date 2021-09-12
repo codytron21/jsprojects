@@ -1,0 +1,12 @@
+#mycanvas{
+    margin-top: 40px;
+    margin-left: 250px;
+    border: 10px solid rgba(5, 147, 5, 0.646) ;
+    background-image: url("assets/bg.jpg");
+}
+
+/* div{
+    width: 780px;
+    height: 500px;
+    background-color: azure;
+} */
