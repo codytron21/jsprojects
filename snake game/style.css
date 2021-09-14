@@ -4,6 +4,9 @@
     border: 10px solid rgba(5, 147, 5, 0.646) ;
     background-image: url("assets/bg.jpg");
 }
+body{
+    background-color: black;
+}
 
 /* div{
     width: 780px;
