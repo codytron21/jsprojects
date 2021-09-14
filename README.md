@@ -4,7 +4,7 @@ This repo contains all my Javascript projects.
 
 <----------------------------------------------FIRST PROJECT-------------------------------------------------->
 <h1>   1.SNAKE GAME</h1>
-
+https://codytron21.github.io/jsprojects/snake game/index.html
 
 
 ![video ‐ Made with Clipchamp (1)](https://user-images.githubusercontent.com/62893559/133301464-3f302921-38ec-41cd-b01a-5c90626d4735.gif)
