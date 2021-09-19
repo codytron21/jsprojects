@@ -7,6 +7,7 @@ This repo contains all my Javascript projects.
 https://codytron21.github.io/jsprojects/snake_game/index.html
 
 
-![video ‐ Made with Clipchamp (1)](https://user-images.githubusercontent.com/62893559/133301464-3f302921-38ec-41cd-b01a-5c90626d4735.gif)
 
 
+
+![VID_20210918153433_SparkVideo](https://user-images.githubusercontent.com/62893559/133885284-4c50ec43-642c-4943-9141-9b104eb9641b.gif)
