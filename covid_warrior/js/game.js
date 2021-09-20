@@ -35,8 +35,8 @@ function init() {
     e3 = {
         x: 450,
         y: 20,
-        w: 60,
-        h: 60,
+        w: 50,
+        h: 50,
         speed: 40
     };
     enemy = [e1, e2, e3];
