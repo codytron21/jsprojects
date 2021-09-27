@@ -35,17 +35,30 @@ function create() {
     // setPostion,setScales are method in spirte.
     background.setPosition(W / 2, H / 2);
     background.setScale(0.20);
-    let stand = this.add.sprite(W / 2, H / 2 + 120, 'stand');
+    let stand = this.add.sprite(W / 2, H / 2 + 130, 'stand');
     stand.setScale(0.30);
-    let wheel = this.add.sprite(W / 2, H / 2, 'wheel');
-    wheel.setScale(0.12);
+    this.wheel = this.add.sprite(W / 2, H / 2, 'wheel');
+    this.wheel.setScale(0.15);
 
-    let pin = this.add.sprite(W / 2, H / 2 - 130, 'pin');
+    let pin = this.add.sprite(W / 2, H / 2 - 160, 'pin');
     pin.setScale(0.20);
-
-
-
+    //event listner for mouse click(using phaser objects)
+    //writen "this" to pass the context.
+    this.input.on("pointerdown", spinwheel, this);
+    //created text object to display.
+    font_style = {
+        font: "bold 30px Roboto",
+        align: "center",
+        color: "red",
+    }
+    //by writing this.game_text we are creating an game_text object in the scene object.
+    //accessing "add" object from scene to assign text. 
+    this.game_text = this.add.text(10, 10, "Welcome to Spin & Win ", font_style);
 }
 function update() {
+    this.wheel.angle += 1;
     console.log("update");
+}
+function spinwheel() {
+    this.game_text.setText("You clicked the mouse!");
 }
