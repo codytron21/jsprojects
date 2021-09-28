@@ -40,8 +40,8 @@ function create() {
     this.wheel = this.add.sprite(W / 2, H / 2, 'wheel');
     this.wheel.setScale(0.15);
 
-    let pin = this.add.sprite(W / 2, H / 2 - 160, 'pin');
-    pin.setScale(0.20);
+    this.pin = this.add.sprite(W / 2, H / 2 - 160, 'pin');
+    this.pin.setScale(0.20);
     //event listner for mouse click(using phaser objects)
     //writen "this" to pass the context.
     this.input.on("pointerdown", spinwheel, this);
@@ -56,9 +56,19 @@ function create() {
     this.game_text = this.add.text(10, 10, "Welcome to Spin & Win ", font_style);
 }
 function update() {
-    this.wheel.angle += 1;
+    // this.wheel.angle += 1;
     console.log("update");
 }
 function spinwheel() {
     this.game_text.setText("You clicked the mouse!");
+    // this.wheel.angle += 1;
+    tween = this.tweens.add({
+        targets: this.wheel,
+        angle: 1700,
+        ease: "Cubic.easeOut",
+        duration: 3000,
+        onComplete: function () {
+            console.log("You won");
+        },
+    });
 }
