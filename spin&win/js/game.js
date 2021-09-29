@@ -21,10 +21,10 @@ function preload() {
     // "this" keyword is used, as preload is part of scene object.
     //load is a phaser object in the scene object.
     //we can give the name of the image here we have given it name 'background'
-    this.load.image('background', '../assets/back.jpg');
-    this.load.image('wheel', '../assets/wheel.png');
-    this.load.image('pin', '../assets/pin.png');
-    this.load.image('stand', '../assets/stand.png');
+    this.load.image('background', 'assets/back.jpg');
+    this.load.image('wheel', 'assets/wheel.png');
+    this.load.image('pin', 'assets/pin.png');
+    this.load.image('stand', '/assets/stand.png');
 }
 function create() {
     console.log("create");
@@ -57,7 +57,7 @@ function create() {
     }
     //by writing this.game_text we are creating an game_text object in the scene object.
     //accessing "add" object from scene to assign text. 
-    this.game_text = this.add.text(10, 10, "Welcome to Spin & Win ", font_style);
+    this.game_text = this.add.text(10, 10, "Welcome to Spin & Win \n Click on the wheel to spin.", font_style);
 }
 function update() {
     // this.wheel.angle += 1;
