@@ -1,7 +1,11 @@
+let prize_config = {
+    count: 12,
+    prize_names: ["3000 credits", "35% Off", "Hard Luck", "70% OFF", "Swagepack", "100% OFF", "Netflix", "50% Off", "Amazon Voucher", "2 Extra Spin", "CB Tshirt", "CB Book"]
+};
 let config = {
     type: Phaser.CANVAS,
     width: 800,
-    height: 400,
+    height: 375,
 
     scene: {
         preload: preload,
@@ -47,7 +51,7 @@ function create() {
     this.input.on("pointerdown", spinwheel, this);
     //created text object to display.
     font_style = {
-        font: "bold 30px Roboto",
+        font: "bold 20px Roboto",
         align: "center",
         color: "red",
     }
@@ -60,15 +64,21 @@ function update() {
     console.log("update");
 }
 function spinwheel() {
-    this.game_text.setText("You clicked the mouse!");
+    this.game_text.setText("Spinning...");
     // this.wheel.angle += 1;
+    let round = Phaser.Math.Between(2, 4);
+    let degree = Phaser.Math.Between(0, 11) * 30;
+    let total_angle = round * 360 + degree;
+    let idx = prize_config.count - 1 - Math.floor(degree / (360 / prize_config.count));
     tween = this.tweens.add({
         targets: this.wheel,
-        angle: 1700,
+        angle: total_angle,
         ease: "Cubic.easeOut",
-        duration: 3000,
+        duration: 6000,
+        callbackScope: this,
         onComplete: function () {
-            console.log("You won");
+            this.game_text.setText("You Won " + prize_config.prize_names[idx]);
+
         },
     });
 }
