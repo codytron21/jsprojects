@@ -15,7 +15,7 @@ https://codytron21.github.io/jsprojects/snake_game/index.html
 https://codytron21.github.io/jsprojects/covid_warrior/index.html
 
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/62893559/135304604-253e5e76-6847-4133-9783-447f71db6f44.gif)
+![ezgif com-gif-maker(1)](https://user-images.githubusercontent.com/62893559/135304604-253e5e76-6847-4133-9783-447f71db6f44.gif)
 <h1> 3.Spin & Win </h1>
 https://codytron21.github.io/jsprojects/spin&win/index.html
 
