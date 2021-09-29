@@ -11,3 +11,6 @@ https://codytron21.github.io/jsprojects/snake_game/index.html
 
 
 ![VID_20210918153433_SparkVideo](https://user-images.githubusercontent.com/62893559/133885284-4c50ec43-642c-4943-9141-9b104eb9641b.gif)
+<h1> 3.Spin & Win </h1>
+https://codytron21.github.io/jsprojects/spin&win/index.html
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/62893559/135296893-7f72a86b-4475-4ca4-93dd-5b1508ac43f0.gif)
