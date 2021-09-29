@@ -2,7 +2,7 @@
 This repo contains all my Javascript projects.
 ![INdOQ](https://user-images.githubusercontent.com/62893559/133291808-58f8b310-ee8e-4e16-b132-9b32abe706bf.gif)
 
-<----------------------------------------------FIRST PROJECT-------------------------------------------------->
+<----------------------------------------------------------------------------------------------------------->
 <h1>   1.SNAKE GAME</h1>
 https://codytron21.github.io/jsprojects/snake_game/index.html
 
@@ -11,6 +11,11 @@ https://codytron21.github.io/jsprojects/snake_game/index.html
 
 
 ![VID_20210918153433_SparkVideo](https://user-images.githubusercontent.com/62893559/133885284-4c50ec43-642c-4943-9141-9b104eb9641b.gif)
+<h1>2.Covid_Warrior</h1>
+https://codytron21.github.io/jsprojects/covid_warrior/index.html
+
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/62893559/135304604-253e5e76-6847-4133-9783-447f71db6f44.gif)
 <h1> 3.Spin & Win </h1>
 https://codytron21.github.io/jsprojects/spin&win/index.html
 
