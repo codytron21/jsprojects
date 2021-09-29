@@ -1,12 +1,12 @@
 function load_image() {
     // player,virus,gem
     enemy_image = new Image;
-    enemy_image.src = "/assets/v1.png";
+    enemy_image.src = "assets/v1.png";
 
     player_image = new Image;
-    player_image.src = "/assets/superhero.png";
+    player_image.src = "assets/superhero.png";
     gem_image = new Image;
-    gem_image.src = "/assets/gemm.png";
+    gem_image.src = "assets/gemm.png";
 }
 function init() {
     //define the objects that we will have in the game.
