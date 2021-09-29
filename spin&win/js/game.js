@@ -24,7 +24,7 @@ function preload() {
     this.load.image('background', 'assets/back.jpg');
     this.load.image('wheel', 'assets/wheel.png');
     this.load.image('pin', 'assets/pin.png');
-    this.load.image('stand', '/assets/stand.png');
+    this.load.image('stand', 'assets/stand.png');
 }
 function create() {
     console.log("create");
