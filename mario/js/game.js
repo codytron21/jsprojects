@@ -14,7 +14,8 @@ let config = {
         arcade: {
             gravity: {
                 y: 1000,
-            }
+            },
+            debug: true,//this will form a box around the objects.
         }
     },
     scene: {
@@ -51,7 +52,8 @@ function create() {
     //instead of using "let player" if we use "this.player" we can then access the
     // player from other function 
     /*let player*/ this.player = this.physics.add.sprite(100, 100, 'dude', 4);
-    //add bounce effect
+    //add bounce effect..
+    //.group() is used to make group of objects.
     this.player.setBounce(0.3);
     let fruits = this.physics.add.group({
         key: "apple",
@@ -64,6 +66,12 @@ function create() {
     fruits.children.iterate(function (f) {
         f.setBounce(Phaser.Math.FloatBetween(0.4, 0.7))
     });
+    //adding plateform and to make them static we use staticGroup()
+    let plateforms = this.physics.add.staticGroup();
+    //if we just use setscale then only the image dimension will change,not thr actual object,so we use refreshBody() to overlap with the dimension of image.  
+    plateforms.create(800, 350, "ground").setScale(2, 0.5).refreshBody();
+    plateforms.create(100, 250, "ground").setScale(2, 0.5).refreshBody();
+    plateforms.create(950, 150, "ground").setScale(2, 0.5).refreshBody();
     //to make ground sprite object experience physics we add .pyhics and since we have ground sprite already we use "existing() "
     this.physics.add.existing(ground);
     //if we write this.physics.add.existing(ground,true) if we pass true it means that it will be static body.and by default it is false that is static.
@@ -74,6 +82,7 @@ function create() {
     //add a collision detection btw player and ground.
     this.physics.add.collider(ground, this.player);
     this.physics.add.collider(ground, fruits);
+    this.physics.add.collider(plateforms, fruits)
 
 
 
