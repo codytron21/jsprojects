@@ -25,6 +25,10 @@ let config = {
     }
 };
 let game = new Phaser.Game(config);
+let player_config = {
+    player_speed: 150,
+    player_jumpspeed: -700,
+};
 function preload() {
     this.load.image("ground", "assets/topground.png");
     this.load.image("sky", "assets/background.png");
@@ -55,11 +59,21 @@ function create() {
     //add bounce effect..
     //.group() is used to make group of objects.
     this.player.setBounce(0.3);
+    // add animation and movement to player.
+
+    //keyboard
+    //"createCursorKey" its an standard function in Phaser
+    //to read any key from the keyboard.
+    //we make object like this.
+    this.cursor = this.input.keyboard.createCursorKeys();
+
+
+    //add group of apples as physical objects.
     let fruits = this.physics.add.group({
         key: "apple",
         repeat: 8,
         setScale: { x: 0.2, y: 0.2 },
-        setXY: { x: 200, y: 0, stepX: 100 },
+        setXY: { x: 100, y: 0, stepX: 100 },
 
     });
     //adding bound effect with different value to each apple by iterating to all the apples
@@ -67,27 +81,41 @@ function create() {
         f.setBounce(Phaser.Math.FloatBetween(0.4, 0.7))
     });
     //adding plateform and to make them static we use staticGroup()
-    let plateforms = this.physics.add.staticGroup();
+    let platforms = this.physics.add.staticGroup();
     //if we just use setscale then only the image dimension will change,not thr actual object,so we use refreshBody() to overlap with the dimension of image.  
-    plateforms.create(800, 350, "ground").setScale(2, 0.5).refreshBody();
-    plateforms.create(100, 250, "ground").setScale(2, 0.5).refreshBody();
-    plateforms.create(950, 150, "ground").setScale(2, 0.5).refreshBody();
+    platforms.create(800, 350, "ground").setScale(2, 0.5).refreshBody();
+    platforms.create(100, 250, "ground").setScale(2, 0.5).refreshBody();
+    platforms.create(950, 150, "ground").setScale(2, 0.5).refreshBody();
     //to make ground sprite object experience physics we add .pyhics and since we have ground sprite already we use "existing() "
-    this.physics.add.existing(ground);
+    this.physics.add.existing(ground, true);
     //if we write this.physics.add.existing(ground,true) if we pass true it means that it will be static body.and by default it is false that is static.
     //if we make ground static we dont have to specifically use .allowGravity and .immovable
     //exempting ground ground from gravity
-    ground.body.allowGravity = false;
-    ground.body.immovable = true;
+    // ground.body.allowGravity = false;
+    // ground.body.immovable = true;
+    //adding the ground in the platforms group. since both have somewhat same functionality.
+    platforms.add(ground);
     //add a collision detection btw player and ground.
-    this.physics.add.collider(ground, this.player);
-    this.physics.add.collider(ground, fruits);
-    this.physics.add.collider(plateforms, fruits)
+    this.physics.add.collider(platforms, this.player);
+    // this.physics.add.collider(ground, fruits);
+    this.physics.add.collider(platforms, fruits);
 
 
 
 
 }
 function update() {
-
+    if (this.cursor.left.isDown) {
+        this.player.setVelocityX(-player_config.player_speed);
+    }
+    else if (this.cursor.right.isDown) {
+        this.player.setVelocityX(player_config.player_speed);
+    }
+    else {
+        this.player.setVelocityX(0);
+    }
+    //add jumping capability
+    if (this.cursor.up.isDown && this.player.body.touching.down) {
+        this.player.setVelocityY(player_config.player_jumpspeed)
+    }
 }
