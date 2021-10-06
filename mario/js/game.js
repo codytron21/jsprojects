@@ -60,12 +60,30 @@ function create() {
     //.group() is used to make group of objects.
     this.player.setBounce(0.3);
     // add animation and movement to player.
+    //"anims "is a Phaser object for creating animation,each animation will be a JSON object
 
-    //keyboard
-    //"createCursorKey" its an standard function in Phaser
-    //to read any key from the keyboard.
-    //we make object like this.
-    this.cursor = this.input.keyboard.createCursorKeys();
+    this.anims.create({
+        key: 'left',
+        frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+        frameRate: 10, //persec 10  frame will change
+        repeat: -1//"-1" mean frame will keep repeating infinitely,until stopped.
+    }),
+        this.anims.create({
+            key: 'right',
+            frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+            frameRate: 10, //persec 10  frame will change
+
+        }),
+        this.anims.create({
+            key: 'middle',
+            frames: this.anims.generateFrameNumbers('dude', { start: 4, end: 4 }),
+            frameRate: 10,
+        }),
+        //keyboard movements
+        //"createCursorKey" its an standard function in Phaser
+        //to read any key from the keyboard.
+        //we make object like this.
+        this.cursor = this.input.keyboard.createCursorKeys();
 
 
     //add group of apples as physical objects.
@@ -107,12 +125,15 @@ function create() {
 function update() {
     if (this.cursor.left.isDown) {
         this.player.setVelocityX(-player_config.player_speed);
+        this.player.anims.play('left', true);
     }
     else if (this.cursor.right.isDown) {
         this.player.setVelocityX(player_config.player_speed);
+        this.player.anims.play('right', true);
     }
     else {
         this.player.setVelocityX(0);
+        this.player.anims.play('middle', true);
     }
     //add jumping capability
     if (this.cursor.up.isDown && this.player.body.touching.down) {
