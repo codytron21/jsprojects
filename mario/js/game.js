@@ -117,6 +117,9 @@ function create() {
     this.physics.add.collider(platforms, this.player);
     // this.physics.add.collider(ground, fruits);
     this.physics.add.collider(platforms, fruits);
+    //using phaser overlap func 
+    //overlap(object1 , [object2] [, collideCallback] [, processCallback] [, callbackContext])
+    this.physics.add.overlap(this.player, fruits, eatfruit, null, this);
 
 
 
@@ -139,4 +142,7 @@ function update() {
     if (this.cursor.up.isDown && this.player.body.touching.down) {
         this.player.setVelocityY(player_config.player_jumpspeed)
     }
+}
+function eatfruit(player, fruit) {
+    fruit.disableBody(true, true);
 }
