@@ -15,7 +15,8 @@ let config = {
             gravity: {
                 y: 1000,
             },
-            debug: true,//this will form a box around the objects.
+            //this will form a box around the objects.
+            // debug: true,
         }
     },
     scene: {
@@ -59,6 +60,8 @@ function create() {
     //add bounce effect..
     //.group() is used to make group of objects.
     this.player.setBounce(0.3);
+    //setCollideworlBounds()  is used to prevents the player from leaving the game world/screen view.\
+    this.player.setCollideWorldBounds(true);
     // add animation and movement to player.
     //"anims "is a Phaser object for creating animation,each animation will be a JSON object
 
@@ -89,9 +92,9 @@ function create() {
     //add group of apples as physical objects.
     let fruits = this.physics.add.group({
         key: "apple",
-        repeat: 8,
+        repeat: 100,
         setScale: { x: 0.2, y: 0.2 },
-        setXY: { x: 100, y: 0, stepX: 100 },
+        setXY: { x: 200, y: 0, stepX: 100 },
 
     });
     //adding bound effect with different value to each apple by iterating to all the apples
@@ -102,7 +105,7 @@ function create() {
     let platforms = this.physics.add.staticGroup();
     //if we just use setscale then only the image dimension will change,not thr actual object,so we use refreshBody() to overlap with the dimension of image.  
     platforms.create(800, 350, "ground").setScale(2, 0.5).refreshBody();
-    platforms.create(100, 250, "ground").setScale(2, 0.5).refreshBody();
+    platforms.create(100, 350, "ground").setScale(2, 0.5).refreshBody();
     platforms.create(950, 150, "ground").setScale(2, 0.5).refreshBody();
     //to make ground sprite object experience physics we add .pyhics and since we have ground sprite already we use "existing() "
     this.physics.add.existing(ground, true);
@@ -121,6 +124,11 @@ function create() {
     //overlap(object1 , [object2] [, collideCallback] [, processCallback] [, callbackContext])
     this.physics.add.overlap(this.player, fruits, eatfruit, null, this);
 
+    //creating camera view
+    this.cameras.main.setBounds(0, 0, W, H);//game view size
+    this.physics.world.setBounds(0, 0, W, H);//world view size,world view size can be greater than game view size.
+    this.cameras.main.startFollow(this.player, true, true);
+    this.cameras.main.setZoom(1.8);
 
 
 
