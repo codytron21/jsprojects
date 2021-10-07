@@ -36,6 +36,7 @@ function preload() {
     this.load.image("apple", "assets/apple.png");
     //to a sprite map type of image we use spritesheet func.
     this.load.spritesheet("dude", "assets/dude.png", { frameWidth: 32, frameHeight: 48 });
+    this.load.image("ray", "assets/ray.png");
 
 }
 function create() {
@@ -52,7 +53,29 @@ function create() {
     let background = this.add.sprite(0, 0, 'sky');
     background.setOrigin(0, 0);
     background.displayWidth = W;
-    background.depth = -1;
+    background.depth = -2;
+    //adding a ray background
+    let rays = [];
+    for (let i = -10; i <= 10; i++) {
+        let ray = this.add.sprite(W / 2, H - 128, 'ray');
+        ray.setOrigin(0.5, 1);
+        ray.displayHeight = 1.2 * H;
+        ray.alpha = 0.2;
+        ray.angle = i * 10;
+        ray.depth = -1;
+        rays.push(ray);
+    }
+    //adding rotation effect to the ray using tweens
+    this.tweens.add({
+        targets: rays,
+        props: {
+            angle: {
+                value: "+=20",
+            },
+        },
+        duration: 6000,
+        repeat: -1,
+    });
     //to make the player an object on which we can apply physics we use .physics
     //instead of using "let player" if we use "this.player" we can then access the
     // player from other function 
